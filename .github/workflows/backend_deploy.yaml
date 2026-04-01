@@ -30,7 +30,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9
+          version: 10
           run_install: false
 
       - name: Deploy Backend for ${{ github.ref_name }}
@@ -70,7 +70,8 @@ jobs:
           if [ "$debug_mode" = "true" ]; then
             pnpm run deploy
           else
-            if pnpm run deploy >/dev/null 2>&1; then
+            # if pnpm run deploy >/dev/null 2>&1; then
+            if pnpm run deploy; then
               echo "Deploy succeeded"
             else
               code=$?
